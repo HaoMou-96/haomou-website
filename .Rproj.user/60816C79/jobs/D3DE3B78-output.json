@@ -1,0 +1,6 @@
+[1,"==> quarto preview index.qmd --to html --no-watch-inputs --no-browse\n\n"]
+[1,"\r\n\r\nprocessing file: index.qmd\r\n1/3                  \r\n2/3 [unnamed-chunk-1]\r\n3/3                  \r\noutput file: index.knit.md\r\n\r\n"]
+[1,"pandoc \n  to: html\n  output-file: index.html\n  standalone: true\n  title-prefix: HAO MOU\n  section-divs: true\n  html-math-method: mathjax\n  wrap: none\n  default-image-extension: png\n  css:\n    - styles.css\n  toc: true\n  \nmetadata\n  document-css: false\n  link-citations: true\n  date-format: long\n  lang: en\n  editor: visual\n  theme: cosmo\n  title: HAO MOU\n  \n"]
+[1,"Output created: _site\\index.html\n\nPreparing to preview\n"]
+[1,"\nWatching files for changes\nBrowse at http://localhost:6488/\n"]
+[1,"GET: /index.html\n"]
