@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "test1",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
   },
   {
     "objectID": "about.html",
@@ -12,5 +12,12 @@
     "title": "About",
     "section": "",
     "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "index.html#assignment-1",
+    "href": "index.html#assignment-1",
+    "title": "test1",
+    "section": "Assignment 1",
+    "text": "Assignment 1\nHere is the assignment 1 of Winter Tree image:\n\n\n\nWinter Tree\n\n\nHere is the assignment 1 of critique on a chart:\n critique: This chart provides a comprehensive view of the relationship between Loan Loss Reserves and Non-Performing Loans (NPLs), along with their corresponding percentages (Loan Loss Reserves % and NPL Rate) over time. It uses both bar charts and line graphs to present four key metrics from 2017 to 2022, with dual Y-axes to show dollar amounts on the left and percentages on the right. While the color coding and use of dual axes are strengths, the chart is overly complex with overlapping bars and inconsistent time intervals, making it harder to interpret. Separating the data into two charts—one for absolute values (Loan Loss Reserves and NPLs) and one for percentage trends—would improve clarity.\n1 + 1"
   }
 ]
