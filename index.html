@@ -110,6 +110,7 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#assignment-1" id="toc-assignment-1" class="nav-link active" data-scroll-target="#assignment-1">Assignment 1</a></li>
   <li><a href="#assignment-2" id="toc-assignment-2" class="nav-link" data-scroll-target="#assignment-2">Assignment 2</a></li>
+  <li><a href="#note" id="toc-note" class="nav-link" data-scroll-target="#note">Note</a></li>
   </ul>
 </nav>
     </div>
@@ -178,7 +179,16 @@ lines(density(gdp_clean, na.rm=TRUE), lwd=2) par(mar=c(5.1, 4.1, 4.1, 2.1))</p>
 <p>x &lt;- gdp[1:50] y &lt;- life_expectancy[1:50] z &lt;- wellbeing[1:50] par(mar=c(0, 0.5, 0, 0), lwd=0.5) persp(x, y, outer(x, y, function(x, y) x * y / max(x, na.rm=TRUE)), theta = 30, phi = 30, expand = 0.5) par(mar=c(5.1, 4.1, 4.1, 2.1), lwd=1)</p>
 <p>par(mar=c(0, 2, 1, 2), xpd=FALSE, cex=0.5) population_data &lt;- population[1:50] names(population_data) &lt;- data$Country[1:50] pie(population_data, col = gray(seq(0.3, 1.0, length=50)), main=“Population Distribution of Countries”)</p>
 <p>Here is the assignment 2 of excerse image: <img src="assignment 2.png" class="img-fluid" alt="assignment 2"></p>
-<p>1 + 1</p>
+</section>
+<section id="note" class="level2">
+<h2 class="anchored" data-anchor-id="note">Note</h2>
+<p>The pitfalls of big data analytics mainly manifest in two areas:</p>
+<p>Blind Faith in Big Data: Over-reliance on big data can lead to the misconception that large datasets can replace traditional data analysis methods, overlooking fundamental issues such as measurement validity and data reliability. While big data can provide abundant information, if the accuracy and relevance of the data to the research objective are not considered, it can lead to incorrect conclusions. For example, simply relying on search data to predict flu trends might cause bias due to other seasonal factors (such as the popularity of sports events), which are unrelated to the actual flu outbreak.</p>
+<p>Algorithm Dynamics: Over time, platforms like Google continuously adjust their algorithms, altering how data is generated. These changes in the search algorithm and user behavior can make models unstable, resulting in predictions that deviate from real-world conditions. This dynamic nature makes it difficult to ensure the accuracy of big data predictions.</p>
+<p>Another common issue in big data modeling is overfitting and overparameterization:</p>
+<p>Overfitting: In analysis, if the model fits the noise in the training data too closely rather than capturing the true patterns in the data, its predictive performance will deteriorate. For instance, when analyzing flu data, removing search terms unrelated to the flu but statistically correlated may seem helpful, but it can cause the model to miss out on actual predictive factors, leading to poor predictions on new data.</p>
+<p>Overparameterization: Using too many variables to fit a small number of data points results in overly complex models, which are more likely to capture spurious correlations. In such cases, the model may not only fail to generalize to other datasets but also significantly reduce the stability and accuracy of its predictions.</p>
+<p>In conclusion, while big data is powerful, if not used cautiously, it can easily fall into the traps of blind faith, overfitting, and overparameterization. Therefore, when using big data, it is crucial to combine it with traditional data analysis methods and maintain a reasonable level of model complexity.</p>
 
 
 </section>
