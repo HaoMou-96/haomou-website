@@ -111,6 +111,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#assignment-1" id="toc-assignment-1" class="nav-link active" data-scroll-target="#assignment-1">Assignment 1</a></li>
   <li><a href="#assignment-2" id="toc-assignment-2" class="nav-link" data-scroll-target="#assignment-2">Assignment 2</a></li>
   <li><a href="#note" id="toc-note" class="nav-link" data-scroll-target="#note">Note</a></li>
+  <li><a href="#assignment-4" id="toc-assignment-4" class="nav-link" data-scroll-target="#assignment-4">Assignment 4</a></li>
   </ul>
 </nav>
     </div>
@@ -187,6 +188,26 @@ lines(density(gdp_clean, na.rm=TRUE), lwd=2) par(mar=c(5.1, 4.1, 4.1, 2.1))</p>
 <p>Overfitting: In analysis, if the model fits the noise in the training data too closely rather than capturing the true patterns in the data, its predictive performance will deteriorate. For instance, when analyzing flu data, removing search terms unrelated to the flu but statistically correlated may seem helpful, but it can cause the model to miss out on actual predictive factors, leading to poor predictions on new data.</p>
 <p>Overparameterization: Using too many variables to fit a small number of data points results in overly complex models, which are more likely to capture spurious correlations. In such cases, the model may not only fail to generalize to other datasets but also significantly reduce the stability and accuracy of its predictions.</p>
 <p>In conclusion, while big data is powerful, if not used cautiously, it can easily fall into the traps of blind faith, overfitting, and overparameterization. Therefore, when using big data, it is crucial to combine it with traditional data analysis methods and maintain a reasonable level of model complexity.</p>
+</section>
+<section id="assignment-4" class="level2">
+<h2 class="anchored" data-anchor-id="assignment-4">Assignment 4</h2>
+<p>install.packages(“readxl”) library(readxl)</p>
+<p>#Bar chart data &lt;- read_excel(“C:/R/coursework/EPPS6356/test1/_site/HPI_country_data.xlsx”)</p>
+<p>gdp_data &lt;- na.omit(data[, c(“Country”, “GDP per capita ($)”)]) gdp_data &lt;- head(gdp_data, 10)</p>
+<p>ggplot(gdp_data, aes(x = reorder(Country, <code>GDP per capita ($)</code>), y = <code>GDP per capita ($)</code>)) + geom_bar(stat = “identity”, fill = “skyblue”) + coord_flip() + labs(title = “Top 10 Countries by GDP per Capita”, x = “Country”, y = “GDP per Capita ($)”) + theme_minimal()</p>
+<p>#Column chart library(ggplot2)</p>
+<p>gdp_data &lt;- na.omit(data[, c(“Country”, “GDP per capita ($)”)]) gdp_data &lt;- head(gdp_data, 10)</p>
+<p>ggplot(gdp_data, aes(x = Country, y = <code>GDP per capita ($)</code>)) + geom_bar(stat = “identity”, fill = “skyblue”) + labs(title = “Column Chart: GDP per Capita for 10 Selected Countries”, x = “Country”, y = “GDP per Capita ($)”) + theme_minimal() + theme(axis.text.x = element_text(angle = 45, hjust = 1))</p>
+<p>#Variable Width Column Chart gdp_pop_data &lt;- na.omit(data[, c(“Country”, “GDP per capita ($)”, “Population (thousands)”)]) gdp_pop_data &lt;- head(gdp_pop_data, 10)</p>
+<p>ggplot(gdp_pop_data, aes(x = Country, y = <code>GDP per capita ($)</code>, width = <code>Population (thousands)</code> / 10000)) + geom_bar(stat = “identity”, fill = “skyblue”, color = “black”) + labs(title = “Variable Width Column Chart: GDP and Population”, x = “Country”, y = “GDP per Capita ($)”) + theme_minimal() + theme(axis.text.x = element_text(angle = 45, hjust = 1))</p>
+<p>#Table or Table with Embedded Charts</p>
+<p>library(tidyr) gdp_pop_long &lt;- gather(gdp_pop_data, key = “Variable”, value = “Value”, -Country)</p>
+<p>ggplot(gdp_pop_long, aes(x = Country, y = Value, fill = Variable)) + geom_bar(stat = “identity”, position = “dodge”) + facet_grid(. ~ Variable) +<br>
+labs(title = “Table with Embedded Charts: GDP and Population”, x = “Country”, y = “Value”) + theme_minimal() + theme(axis.text.x = element_text(angle = 45, hjust = 1))<br>
+<img src="Bar.png" class="img-fluid" alt="Bar"> Bar chart: This chart compares the GDP per capita (in USD) of the top 10 countries using a horizontal bar chart. The X-axis represents the amount of GDP per capita, ranging from 0 to 50,000 USD, and the Y-axis lists the names of the countries, including Denmark, Sweden, Spain, Panama, Costa Rica, El Salvador, Nicaragua, Sudan, Vanuatu, and Burundi. The length of each bar represents the GDP per capita of the respective country, with longer bars indicating higher GDP per capita. It is evident that Denmark and Sweden lead significantly, with GDP per capita exceeding 45,000 USD, while Burundi has the lowest GDP per capita, clearly lagging behind the other countries. The chart effectively highlights the economic disparities between countries, particularly between developed and developing nations.</p>
+<p><img src="Column Chart.png" class="img-fluid" alt="Column Chart"> Column Chart:This chart visually highlights the economic disparities among the selected countries. Denmark and Sweden lead significantly in terms of GDP per capita, while countries like Burundi and Sudan show much lower economic performance. The chart effectively shows the gap between developed and developing nations.</p>
+<p><img src="Variable Width.png" class="img-fluid" alt="Variable Width"> Variable Width: This chart provides a dual perspective on economic data by showing both the GDP per capita and population size. Denmark and Sweden lead in GDP per capita, but countries like Sudan, with a relatively larger population, have much lower GDP per capita. The chart effectively illustrates the relationship between economic output and population size across different countries.</p>
+<p><img src="Table or Table with.png" class="img-fluid" alt="Table or Table with"> Table or Table with:This table-style chart uses embedded bar charts to display both GDP per capita and population for the selected countries. The side-by-side comparison of these two variables shows that while Denmark and Sweden lead in GDP per capita, countries like Sudan and Spain have larger populations. This format effectively highlights the contrasts between economic output and population size within each country.</p>
 
 
 </section>
