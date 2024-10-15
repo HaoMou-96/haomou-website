@@ -112,6 +112,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#assignment-2" id="toc-assignment-2" class="nav-link" data-scroll-target="#assignment-2">Assignment 2</a></li>
   <li><a href="#note" id="toc-note" class="nav-link" data-scroll-target="#note">Note</a></li>
   <li><a href="#assignment-4" id="toc-assignment-4" class="nav-link" data-scroll-target="#assignment-4">Assignment 4</a></li>
+  <li><a href="#assignment-5" id="toc-assignment-5" class="nav-link" data-scroll-target="#assignment-5">Assignment 5</a></li>
   </ul>
 </nav>
     </div>
@@ -208,6 +209,49 @@ labs(title = “Table with Embedded Charts: GDP and Population”, x = “Countr
 <p><img src="Column Chart.png" class="img-fluid" alt="Column Chart"> Column Chart:This chart visually highlights the economic disparities among the selected countries. Denmark and Sweden lead significantly in terms of GDP per capita, while countries like Burundi and Sudan show much lower economic performance. The chart effectively shows the gap between developed and developing nations.</p>
 <p><img src="Variable Width.png" class="img-fluid" alt="Variable Width"> Variable Width: This chart provides a dual perspective on economic data by showing both the GDP per capita and population size. Denmark and Sweden lead in GDP per capita, but countries like Sudan, with a relatively larger population, have much lower GDP per capita. The chart effectively illustrates the relationship between economic output and population size across different countries.</p>
 <p><img src="Table or Table with.png" class="img-fluid" alt="Table or Table with"> Table or Table with:This table-style chart uses embedded bar charts to display both GDP per capita and population for the selected countries. The side-by-side comparison of these two variables shows that while Denmark and Sweden lead in GDP per capita, countries like Sudan and Spain have larger populations. This format effectively highlights the contrasts between economic output and population size within each country.</p>
+</section>
+<section id="assignment-5" class="level2">
+<h2 class="anchored" data-anchor-id="assignment-5">Assignment 5</h2>
+<p>library(readxl)</p>
+<p>file_path &lt;- “C:/R/coursework/EPPS6356/test1/_site/unemployment rate annual.xlsx” df &lt;- read_excel(file_path)</p>
+<p>data_2022 &lt;- df$<code>2022</code></p>
+<p>#histogram jpeg(“unemployment_rate_histogram_2022.jpg”) hist(data_2022, breaks=10, main=“Unemployment Rate Histogram for 2022”, xlab=“Unemployment Rate”, col=“blue”, border=“black”) dev.off()</p>
+<p>data_2021 &lt;- df<span class="math inline">\(`2021` industry_names &lt;- df\)</span>Industry</p>
+<p>#Vertical_barchart</p>
+<p>pdf(“unemployment_rate_Vertical_barchart_2021.pdf”, width = 8, height = 6) barplot(height = data_2021, names.arg = industry_names, las=2, col=“lightblue”, main=“Unemployment Rate by Industry in 2021”, xlab=“Industry”, ylab=“Unemployment Rate”, cex.names=0.7, border=“black”, horiz=FALSE) dev.off()</p>
+<p>#horizontal_barchart svg(“unemployment_rate_horizontal_barchart_2022.svg”, width = 8, height = 6) barplot(height = data_2022, names.arg = industry_names, las=2, col=“lightgreen”, main=“Unemployment Rate by Industry in 2022”, xlab=“Unemployment Rate”, ylab=“Industry”, cex.names=0.7, border=“black”, horiz=TRUE) dev.off()</p>
+<p>#Piechart jpeg(“unemployment_rate_piechart_2021.jpg”, width = 800, height = 600) pie(data_2021, labels = industry_names, main=“Unemployment Rate by Industry in 2021”, col=rainbow(length(data_2021)), cex=0.8) dev.off()</p>
+<p>#Boxplot jpeg(“unemployment_rate_boxplot_2022.jpg”, width = 800, height = 600) boxplot(data_2022, main=“Boxplot of Unemployment Rate in 2022”, ylab=“Unemployment Rate”, col=“lightblue”, border=“black”) dev.off()</p>
+<p>#scatterplot jpeg(“unemployment_rate_scatterplot_2022.jpg”, width = 800, height = 600) plot(data_2022, type=“p”, pch=16, col=“blue”, main=“Scatterplot of Unemployment Rate by Industry in 2022”, xlab=“Industry Index”, ylab=“Unemployment Rate”)</p>
+<p>text(x=1:length(data_2022), y=data_2022, labels=industry_names, pos=4, cex=0.7) dev.off()</p>
+<p>library(ggplot2)</p>
+<p>#Histogram ggplot2 jpeg(“unemployment_rate_histogram_ggplot2_2022.jpg”, width = 800, height = 600) ggplot(df, aes(x = data_2022)) + geom_histogram(binwidth = 1, fill=“blue”, color=“black”, alpha=0.7) + labs(title = “Unemployment Rate Histogram for 2022”, x = “Unemployment Rate”, y = “Frequency”) + theme_minimal() dev.off()</p>
+<p>#horizontal_barchart ggplot2 jpeg(“unemployment_rate_horizontal_barchart_ggplot2_2021.jpg”, width = 800, height = 600)</p>
+<p>p &lt;- ggplot(df, aes(x = reorder(industry_names, data_2021), y = data_2021)) + geom_bar(stat = “identity”, fill = “lightgreen”, color = “black”) + labs(title = “Unemployment Rate by Industry in 2021”, x = “Industry”, y = “Unemployment Rate”) + coord_flip() +<br>
+theme_minimal()</p>
+<p>print(p)<br>
+dev.off()</p>
+<p>#Vertical_barchart ggplot2 bmp(“unemployment_rate_barchart_ggplot2_2022.bmp”, width = 800, height = 600, units = “px”, res = 300)</p>
+<p>p &lt;- ggplot(df, aes(x = reorder(industry_names, data_2022), y = data_2022)) + geom_bar(stat = “identity”, fill = “lightblue”, color = “black”) + labs(title = “Unemployment Rate by Industry in 2022”, x = “Industry”, y = “Unemployment Rate”) + theme(axis.text.x = element_text(angle = 90, hjust = 1)) +<br>
+theme_minimal()</p>
+<p>print(p)</p>
+<p>dev.off()</p>
+<p>#Piechart ggplot2 pie_data &lt;- data.frame(industry_names, data_2021)</p>
+<p>jpeg(“unemployment_rate_piechart_ggplot2_2021.jpg”, width = 800, height = 600)</p>
+<p>p &lt;- ggplot(pie_data, aes(x = ““, y = data_2021, fill = industry_names)) + geom_bar(stat =”identity”, width = 1) + coord_polar(“y”) +<br>
+labs(title = “Unemployment Rate by Industry in 2021”) + theme_void() +<br>
+theme(legend.position = “right”)</p>
+<p>print(p)</p>
+<p>dev.off()</p>
+<p>#Boxplot ggplot2 boxplot_data &lt;- data.frame(Unemployment_Rate = data_2022)</p>
+<p>jpeg(“unemployment_rate_boxplot_ggplot2_2022.jpg”, width = 800, height = 600)</p>
+<p>p &lt;- ggplot(boxplot_data, aes(y = Unemployment_Rate)) + geom_boxplot(fill = “lightblue”, color = “black”) + labs(title = “Boxplot of Unemployment Rate in 2022”, y = “Unemployment Rate”) + theme_minimal() print(p) dev.off()</p>
+<p>#Scatterplot ggplot2 scatter_data &lt;- data.frame(Industry = industry_names, Unemployment_Rate = data_2022)</p>
+<p>jpeg(“unemployment_rate_scatterplot_ggplot2_2022.jpg”, width = 800, height = 600)</p>
+<p>p &lt;- ggplot(scatter_data, aes(x = Industry, y = Unemployment_Rate)) + geom_point(color = “blue”, size = 3) + labs(title = “Scatterplot of Unemployment Rate by Industry in 2022”, x = “Industry”, y = “Unemployment Rate”) + theme(axis.text.x = element_text(angle = 90, hjust = 1)) +<br>
+theme_minimal()</p>
+<p>print(p) dev.off()</p>
+<p><img src="unemployment_rate_histogram_2022.jpg" class="img-fluid" alt="Unemployment Rate Histogram 2022"> <embed src="unemployment_rate_Vertical_barchart_2021.pdf" class="img-fluid"> <img src="unemployment_rate_horizontal_barchart_2022.svg" class="img-fluid" alt="Unemployment Rate Horizontal Barchart 2022"> <img src="unemployment_rate_piechart_2021.jpg" class="img-fluid" alt="Unemployment Rate Piechart 2021"> <img src="unemployment_rate_boxplot_2022.jpg" class="img-fluid" alt="Unemployment Rate Boxplot 2022"> <img src="unemployment_rate_scatterplot_2022.jpg" class="img-fluid" alt="Unemployment Rate Scatterplot 2022"> <img src="unemployment_rate_histogram_ggplot2_2022.jpg" class="img-fluid" alt="Unemployment Rate Histogram ggplot2 2022"> <img src="unemployment_rate_horizontal_barchart_ggplot2_2021.jpg" class="img-fluid" alt="Unemployment Rate Horizontal Barchart ggplot2 2021"> <img src="unemployment_rate_barchart_ggplot2_2022.bmp" class="img-fluid" alt="Unemployment Rate Barchart ggplot2 2022"> <img src="unemployment_rate_piechart_ggplot2_2021.jpg" class="img-fluid" alt="Unemployment Rate Piechart ggplot2 2021"> <img src="unemployment_rate_boxplot_ggplot2_2022.jpg" class="img-fluid" alt="Unemployment Rate Boxplot ggplot2 2022"> <img src="unemployment_rate_scatterplot_ggplot2_2022.jpg" class="img-fluid" alt="Unemployment Rate Scatterplot ggplot2 2022"></p>
 
 
 </section>
