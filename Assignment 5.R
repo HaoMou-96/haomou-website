@@ -140,3 +140,4 @@ p <- ggplot(scatter_data, aes(x = Industry, y = Unemployment_Rate)) +
 
 print(p)
 dev.off()
+
